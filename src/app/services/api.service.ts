@@ -26,7 +26,6 @@ export class ApiService {
       return from(this.getLocalData('users'));
     } else {
       const page = Math.floor(Math.random() * Math.floor(6));
-
       return this.http.get(`${API_URL}/users?per_page=2&page=${page}`).pipe(
       // @ts-ignore
         map(res => res.data),
@@ -42,7 +41,6 @@ export class ApiService {
     const url = `${API_URL}/users/${user}`;
 
     if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
-      console.log('Dead internet');
       return from(this.offlineManager.storeRequest(url, 'PUT', data));
     } else {
       return this.http.put(url, data).pipe(

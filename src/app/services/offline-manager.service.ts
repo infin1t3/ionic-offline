@@ -20,7 +20,11 @@ interface StoredRequest {
 })
 export class OfflineManagerService {
 
-  constructor(private storage: Storage, private toastController: ToastController, private http: HttpClient) {
+  constructor(
+    private storage: Storage,
+    private toastController: ToastController,
+    private http: HttpClient
+  ) {
   }
 
   checkForEvents(): Observable<any> {
